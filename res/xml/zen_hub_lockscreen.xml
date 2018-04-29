@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 Zenx-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/lockscreen_title"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <PreferenceCategory
+        android:key="ls_gestures"
+        android:title="@string/gestures_title">
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_media_category"
+        android:title="@string/lockscreen_media_category" >
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ls_clock"
+        android:title="@string/ls_clock">
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="weather_lockscreen_key"
+        android:title="@string/weather_title" >
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ls_unlocking"
+        android:title="@string/ls_unlocking">
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ls_disable_elements"
+        android:title="@string/ls_disable_elements">
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ls_shortcuts"
+        android:title="@string/ls_shortcuts">
+
+
+    </PreferenceCategory>
+</PreferenceScreen>

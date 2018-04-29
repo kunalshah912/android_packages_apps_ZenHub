@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 Zenx-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/zen_hub_title" >
+
+        <!-- Status Bar -->
+        <Preference
+            android:key="statusbar_category"
+            android:title="@string/statusbar_title"
+            android:fragment="com.zenx.zen.hub.fragments.StatusBar" 
+            android:icon="@drawable/ic_settings_statusbar"/>
+
+        <!-- Quick Settings -->
+        <Preference
+            android:key="quicksettings_category"
+            android:title="@string/quicksettings_title"
+            android:fragment="com.zenx.zen.hub.fragments.QuickSettings"
+            android:icon="@drawable/ic_settings_quicksettings"/>
+
+        <!-- Interface
+        <Preference
+            android:key="interface_category"
+            android:title="@string/interface_title"
+            android:fragment="com.zenx.zen.hub.fragments.Interface"
+            android:icon="@drawable/ic_settings_int"/>  -->
+			
+        <!-- Ambient Display -->			
+        <Preference
+            android:key="doze_fragment" 
+            android:title="@string/doze_display_title" 
+            android:icon="@drawable/ic_settings_ambient"
+            android:fragment="com.zenx.zen.hub.fragments.DozeFragment" />
+
+        <!-- Display -->
+        <Preference
+            android:key="display_category"
+            android:title="@string/display_title"
+            android:fragment="com.zenx.zen.hub.fragments.Display"
+            android:icon="@drawable/ic_settings_screen"/>
+
+                <!-- Display -->
+        <Preference
+            android:key="display_category"
+            android:title="@string/display_title"
+            android:fragment="com.zenx.zen.hub.fragments.Display"
+            android:icon="@drawable/ic_settings_screen"/>
+
+        <!-- Buttons -->
+        <Preference
+            android:key="buttons_category"
+            android:title="@string/buttons_title"
+            android:fragment="com.zenx.zen.hub.fragments.Buttons"
+            android:icon="@drawable/ic_settings_buttons"/>
+        
+        <!-- Gestures -->
+        <Preference
+            android:key="gestures_category"
+            android:title="@string/gestures_title"
+            android:fragment="com.zenx.zen.hub.fragments.Gestures"
+            android:icon="@drawable/ic_settings_gesture"/>
+
+        <!-- Navigation Bar -->
+        <Preference
+            android:key="navigation_category"
+            android:title="@string/navigation_title"
+	        android:fragment="com.zenx.zen.hub.fragments.NavigationBarSettings"
+            android:icon="@drawable/ic_settings_navigation"/>
+            
+        <!-- Lock Screen -->
+        <Preference
+            android:key="lockscreen_category"
+            android:title="@string/lockscreen_title" 
+            android:fragment="com.zenx.zen.hub.fragments.LockScreen"
+            android:icon="@drawable/ic_settings_lockscreen"/>
+
+        <!-- Recents
+        <Preference
+            android:key="recents_category"
+            android:title="@string/recents_title"
+            android:fragment="com.zenx.zen.hub.fragments.Recents"
+            android:icon="@drawable/ic_settings_recents"/> -->
+
+        <!-- Notifications -->
+        <Preference
+            android:key="notifications_category"
+            android:title="@string/notifications_title"
+            android:fragment="com.zenx.zen.hub.fragments.Notifications"
+            android:icon="@drawable/ic_settings_notifications"/>
+
+        <!-- Animation -->
+        <Preference
+            android:key="animations_category"
+            android:title="@string/animations_title"
+            android:fragment="com.zenx.zen.hub.fragments.Animations"
+            android:icon="@drawable/ic_settings_animations"/>
+
+        <!-- System
+        <Preference
+            android:key="system_category"
+            android:title="@string/system_title"
+            android:fragment="com.zenx.zen.hub.fragments.System"
+            android:icon="@drawable/ic_settings_system"/> -->
+
+        <!-- IME Settings -->
+        <Preference
+            android:key="ime_category"
+            android:title="@string/ime_title"
+            android:fragment="com.zenx.zen.hub.fragments.IME"
+            android:icon="@drawable/ic_settings_ime"/>
+        
+        <!-- Battery Saving -->
+        <Preference
+            android:key="battery_category"
+            android:title="@string/battery_title"
+            android:fragment="com.zenx.zen.hub.fragments.Battery"
+            android:icon="@drawable/ic_settings_batterysave"/>
+
+        <!-- Misc -->
+        <Preference
+            android:key="misc_category"
+            android:title="@string/misc_title"
+            android:fragment="com.zenx.zen.hub.fragments.Misc"
+            android:icon="@drawable/ic_settings_misc"/>
+
+        <!-- About -->
+        <Preference
+            android:key="about_category"
+            android:title="@string/about_title"
+            android:fragment="com.zenx.zen.hub.fragments.About"
+            android:icon="@drawable/ic_settings_about"/>
+
+</PreferenceScreen>

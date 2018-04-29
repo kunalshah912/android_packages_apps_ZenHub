@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 Zenx-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App Title -->
+    <string name="zen_hub_title">uration Center</string>
+
+    <!-- Zenx-Categories -->
+    <string name="about_title">About</string>
+    <string name="animations_title">Animations</string>
+    <string name="buttons_title">Buttons</string>
+    <string name="display_title">Screen</string>
+    <string name="gestures_title">Gestures</string>
+    <string name="ime_title">IME Settings</string>
+    <string name="interface_title">Interface</string>
+    <string name="lockscreen_title">Lock Screen</string>
+    <string name="misc_title">Miscellaneous</string>
+    <string name="navigation_title">Navigation Bar</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="panels_title">Panels</string>
+    <string name="quicksettings_title">Quick Settings</string>
+    <string name="recents_title">Recents</string>
+    <string name="statusbar_title">Status Bar</string>
+    <string name="system_title">System</string>
+    <string name="volume_title">Volume Rockers</string>
+    <string name="battery_title">Battery Saving</string>
+    <string name="doze_display_title">Ambient Display</string>
+
+    <!-- General strings -->
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+    <!-- About -->
+	<string name="developers_category_title">Developers</string>
+	<string name="support_category_title">Support Team</string>
+    <string name="maintainers_category_title">Maintainers</string>
+    <string name="zenx_developers_zenixxx" translatable="false">• Founder \n• Core Developer\n• Maintainer</string>
+    <string name="zenx_support_summary" translatable="false">• Support Group Moderator</string>
+    <string name="device_maintainers_title">Official Devices</string>
+    <string name="device_maintainers_title_summary">List of official devices and their maintainers</string>
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_title_summary">View recent changes in ROM</string>
+    <string name="changelog_error">Unable to load changelog</string>
+    <string name="zenx_announcements_title">Announcements</string>
+    <string name="zenx_announcements_summary">Official announcements channel</string>
+    <string name="zenx_telegram_title">Telegram</string>
+    <string name="zenx_telegram_summary">Support group for Official builds</string>
+    <string name="zenx_discord_title">Discord</string>
+    <string name="zenx_discord_summary">Official server for ROM support</string>
+    <string name="zenx_source_title">Github</string>
+    <string name="zenx_source_summary">Zenx-OS source code</string>
+    <string name="zenx_donate">Donate</string>
+    <string name="zenx_donate_summary">Show your support to Zenx-OS Team</string>
+	<string name="zenx_links">Links</string>
+    <string name="website_title">Website</string>
+    <string name="website_title_summary">Download Zenx-OS for your device</string>
+
+    <!-- Animation Categories -->
+	<string name="system_animation_title">System</string>
+	<string name="list_animation_title">List</string>
+	<string name="tile_animation_title">Tile</string>
+	<string name="power_menu_category">Power</string>
+	<string name="toast_animation_cat_title">Toast</string>
+
+    <!-- Battery Categories -->
+    <string name="battery_wakelock">Wakelocks</string>
+    <string name="advanced_doze_settings">Doze</string>
+
+    <!-- Buttons Categories -->
+
+    <!-- Display Categories -->
+    <string name="corners_category">Corners</string>
+    <string name="cutout_main">Display Cutout</string>
+
+    <!-- Gestures Categories -->
+    <string name="gesture_misc">Misc</string>
+    <string name="gesture_nav">Navigation</string>
+
+    <!-- Interface Categories -->
+     <string name="qs_themes_category_title">QS Themes</string>
+     <string name="custom_header_category">QS Header</string>
+     <string name="dashboard_category">Settings</string>
+
+    <!-- Lockscreen Categories -->
+    <string name="lockscreen_media_category">Music</string>
+    <string name="ls_clock">Widgets</string>
+    <string name="weather_title">Weather</string>
+    <string name="ls_unlocking">Weather</string>
+    <string name="ls_disable_elements">Elements</string>
+    <string name="ls_shortcuts">Shortcuts</string>
+
+    <!-- Misc Categories -->
+    <string name="connector_category">Connection Settings</string>
+    <string name="gaming_category">Gaming Mode</string>
+    <string name="screenshot_category">Screenshot</string>
+
+    <!-- Notification Categories -->
+    <string name="notification_lights">Lights</string>
+    <string name="notification_stat">Statusbar</string>
+    <string name="status_bar_show_ticker_title">Ticker</string>
+    <string name="notification_messages">System</string>
+    <string name="notification_misc">Misc</string>
+    <string name="incall_vibration_category">In-call Vibration</string>
+
+    <!-- Quicksettings Categories -->
+    <string name="qs_layout_category">Layout</string>
+    <string name="brightness_category_title">Brightness</string>
+    <string name="qs_element_title">Brightness Slider</string>
+    <string name="qs_clock_title">QS header clock</string>
+    <string name="header_title">Header</string>
+    <string name="footer_title">Footer</string>
+
+    <!-- Recent Categories -->
+    <string name="slim_recents_title">Slim Recents</string>
+    <string name="recent_button_title">Stock Recents</string>
+    <string name="immersive_recent_title">Immersive Recent</string>
+
+    <!-- System Categories -->
+    <string name="navigation_burnin_category">Burn-in Protection</string>
+    <string name="system_tuner">System Tuner</string>
+
+    <!-- Statusbar Categories -->
+    <string name="statusbar_gestures">Gestures</string>
+    <string name="statusbar_clock">Clock</string>
+    <string name="statusbar_battery">Battery</string>
+    <string name="statusbar_ntraffic">Network</string>
+    <string name="statusbar_logo">Logo</string>
+    <string name="statusbar_items_category">Icons</string>
+    <string name="breathing_notifications_category">Breathing Notifications</string>
+</resources>
