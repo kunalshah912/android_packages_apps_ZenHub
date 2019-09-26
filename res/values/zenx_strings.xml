@@ -103,6 +103,10 @@
     <string name="ls_disable_elements">Elements</string>
     <string name="ls_shortcuts">Shortcuts</string>
 
+    <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Charging info</string>
+    <string name="lockscreen_battery_info_summary">Display charger max current, voltage and battery temperature while charging</string>
+
     <!-- Misc Categories -->
     <string name="connector_category">Connection Settings</string>
     <string name="gaming_category">Gaming Mode</string>
