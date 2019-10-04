@@ -37,6 +37,7 @@
     <string name="volume_title">Volume Rockers</string>
     <string name="battery_title">Battery Saving</string>
     <string name="doze_display_title">Ambient Display</string>
+    <string name="volume_summary">Customize settings for volume buttons</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
@@ -150,4 +151,8 @@
 
     <!-- Navbar options -->
     <string name="navbar_invert_layout_title">Invert layout</string>
+
+        <!-- Volume rocker music control -->
+    <string name="volume_rocker_music_controls_title">Playback control</string>
+    <string name="volume_rocker_music_controls_summary">When the screen is off, long-pressing the volume keys will seek music tracks</string>
 </resources>
