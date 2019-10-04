@@ -24,10 +24,19 @@
          android:title="@string/volume_rocker_music_controls_title"
          android:defaultValue="false" />
 
-    <com.havoc.support.preferences.SystemSettingSwitchPreference
+    <com.zenx.support.preferences.SystemSettingSwitchPreference
             android:key="volume_rocker_wake"
             android:summary="@string/volume_rocker_wake_summary"
             android:title="@string/volume_rocker_wake_title"
             android:defaultValue="false" />
+
+    <com.zenx.support.preferences.SystemSettingListPreference
+        android:key="volume_key_cursor_control"
+        android:summary="%s"
+        android:title="@string/volume_key_cursor_control_title"
+        android:dialogTitle="@string/volume_key_cursor_control_title"
+        android:entries="@array/volume_key_cursor_control_entries"
+        android:entryValues="@array/volume_key_cursor_control_values"
+        android:defaultValue="0" />
 
 </PreferenceScreen>
