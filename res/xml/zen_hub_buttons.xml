@@ -40,6 +40,12 @@
         android:title="@string/volume_title">
 
         <Preference
+            android:key="vol_steps"
+            android:title="@string/volume_steps_fragment_title"
+            android:summary="@string/volume_steps_summary"
+            android:fragment="com.zenx.zen.hub.fragments.VolumeStepsFragment" />
+
+        <Preference
             android:key="volume_key"
             android:fragment="com.zenx.zen.hub.fragments.Volume"
             android:title="@string/volume_title"
