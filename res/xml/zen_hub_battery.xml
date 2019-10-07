@@ -22,7 +22,7 @@
         android:key="battery_wakelock"
         android:title="@string/battery_wakelock">
 
-        <com.havoc.support.preferences.SystemSettingSwitchPreference
+        <com.zenx.support.preferences.SystemSettingSwitchPreference
             android:key="sensor_block"
             android:title="@string/sensor_block_title"
             android:summary="@string/sensor_block_summary"
@@ -34,6 +34,12 @@
         android:key="battery_actions"
         android:title="@string/advanced_doze_settings">
 
+
+    <Preference
+        android:key="screenstate_category" 
+        android:title="@string/screen_state_toggles_title"  
+        android:summary="@string/screen_state_toggles_summary"  
+        android:fragment="com.zenx.zen.hub.fragments.ScreenStateToggles" /> 
 
     </PreferenceCategory>
 
