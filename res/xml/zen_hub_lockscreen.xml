@@ -30,11 +30,11 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="lockscreen_media_category"
         android:title="@string/lockscreen_media_category" >
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory
         android:key="ls_clock"
@@ -73,12 +73,12 @@
             android:persistent="false" />
 
     </PreferenceCategory>
-
+<!-- 
     <PreferenceCategory
         android:key="weather_lockscreen_key"
         android:title="@string/weather_title" >
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory
         android:key="ls_unlocking"

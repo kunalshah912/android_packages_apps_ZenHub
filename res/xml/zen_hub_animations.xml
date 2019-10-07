@@ -17,19 +17,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/animations_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-
+<!--
     <PreferenceCategory
         android:title="@string/system_animation_title">
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
-    <PreferenceCategory 
+    <!-- <PreferenceCategory
         android:title="@string/list_animation_title"
         android:key="list_animation"  >
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
  
     <PreferenceCategory
          android:title="@string/tile_animation_title"
@@ -58,19 +58,19 @@
     
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
          android:title="@string/power_menu_category"
          android:key="power_animation">
 
 
 
-    </PreferenceCategory>
-
+    </PreferenceCategory> -->
+<!-- 
     <PreferenceCategory
         android:title="@string/toast_animation_cat_title"
         android:key="toast_animation_cat" >
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
 </PreferenceScreen>

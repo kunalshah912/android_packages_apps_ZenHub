@@ -53,13 +53,6 @@
             android:fragment="com.zenx.zen.hub.fragments.Display"
             android:icon="@drawable/ic_settings_screen"/>
 
-                <!-- Display -->
-        <Preference
-            android:key="display_category"
-            android:title="@string/display_title"
-            android:fragment="com.zenx.zen.hub.fragments.Display"
-            android:icon="@drawable/ic_settings_screen"/>
-
         <!-- Buttons -->
         <Preference
             android:key="buttons_category"

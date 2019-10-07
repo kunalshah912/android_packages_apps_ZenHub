@@ -31,18 +31,18 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="statusbar_clock"
         android:title="@string/statusbar_clock">
 
 
-    </PreferenceCategory>
-
+    </PreferenceCategory> -->
+<!--
     <PreferenceCategory
         android:key="statusbar_battery"
         android:title="@string/statusbar_battery">
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory
         android:key="statusbar_ntraffic"
@@ -51,12 +51,12 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="statusbar_logo"
         android:title="@string/statusbar_logo">
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory
         android:key="statusbar_tuner"
@@ -76,8 +76,8 @@
         </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:title="@string/breathing_notifications_category" >
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 </PreferenceScreen>

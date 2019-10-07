@@ -18,19 +18,19 @@
     android:title="@string/interface_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-
+<!--
     <PreferenceCategory
         android:key="qs_category"
         android:title="@string/qs_themes_category_title" >
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
-    <PreferenceCategory 
+    <!-- <PreferenceCategory 
         android:title="@string/custom_header_category">
-                        
 
-    </PreferenceCategory>
+
+    </PreferenceCategory> -->
 
     
     <PreferenceCategory 

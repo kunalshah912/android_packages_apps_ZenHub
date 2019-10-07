@@ -24,11 +24,11 @@
 
 
     </PreferenceCategory>
-
+<!-- 
     <PreferenceCategory
         android:key="gesture_nav"
         android:title="@string/gesture_nav">
 
-    
-    </PreferenceCategory>
+
+    </PreferenceCategory> -->
 </PreferenceScreen>

@@ -30,17 +30,17 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="gaming_category"
         android:title="@string/gaming_category">
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="screenshot_category"
         android:title="@string/screenshot_category">
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
 </PreferenceScreen>

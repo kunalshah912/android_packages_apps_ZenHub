@@ -24,17 +24,17 @@
             android:summary="@string/smart_pixels_summary"
             android:fragment="com.zenx.zen.hub.fragments.SmartPixels" />
             
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:title="@string/corners_category" >
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="cutout_settings"
         android:title="@string/cutout_main" >
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
 </PreferenceScreen>

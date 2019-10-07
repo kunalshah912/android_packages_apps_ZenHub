@@ -63,22 +63,20 @@
          android:defaultValue="0"
          android:summary="%s" />
 
-
-
     </PreferenceCategory>
-
-    <PreferenceCategory 
+<!--
+    <PreferenceCategory
         android:title="@string/qs_clock_title"
         android:key="clock" >
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
-    <PreferenceCategory 
+    <!-- <PreferenceCategory
         android:title="@string/header_title"
         android:key="header" >
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory 
         android:title="@string/footer_title"
