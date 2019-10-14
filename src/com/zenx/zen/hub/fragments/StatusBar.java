@@ -17,15 +17,24 @@ package com.zenx.zen.hub.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.content.res.Resources;
 import androidx.preference.*;
+import android.telephony.TelephonyManager;
+import android.text.Spannable;
+import android.text.TextUtils;
 import android.provider.Settings;
+import android.widget.EditText;
 import com.android.settings.R;
 
 import java.util.Locale;
@@ -76,6 +85,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mShowDuration.setValue(showVal);
         mShowDuration.setOnPreferenceChangeListener(this);
         
+
     }
 
     @Override
