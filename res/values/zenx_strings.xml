@@ -38,6 +38,7 @@
     <string name="battery_title">Battery Saving</string>
     <string name="doze_display_title">Ambient Display</string>
     <string name="volume_summary">Customize settings for volume buttons</string>
+    <string name="ambient_display_custom_title">Ambient Display</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>

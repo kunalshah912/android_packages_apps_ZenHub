@@ -39,12 +39,17 @@
             android:fragment="com.zenx.zen.hub.fragments.Interface"
             android:icon="@drawable/ic_settings_int"/>  -->
 			
-        <!-- Ambient Display -->			
+        <!-- Ambient Display -->
         <Preference
-            android:key="doze_fragment" 
-            android:title="@string/doze_display_title" 
-            android:icon="@drawable/ic_settings_ambient"
-            android:fragment="com.zenx.zen.hub.fragments.DozeFragment" />
+            android:key="ambient_display_custom"
+            android:persistent="false"
+            android:title="@string/ambient_display_custom_title"
+            android:icon="@drawable/ic_settings_ambient" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.custom.ambient.display"
+                android:targetClass="com.custom.ambient.display.DozeSettings" />
+        </Preference>
 
         <!-- Display -->
         <Preference
