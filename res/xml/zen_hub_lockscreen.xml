@@ -138,10 +138,10 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!-- <PreferenceCategory
         android:key="ls_shortcuts"
         android:title="@string/ls_shortcuts">
 
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 </PreferenceScreen>
