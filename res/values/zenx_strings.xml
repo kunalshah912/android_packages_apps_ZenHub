@@ -21,8 +21,8 @@
     <string name="about_title">About</string>
     <string name="animations_title">Animations</string>
     <string name="buttons_title">Buttons</string>
-    <string name="display_title">Screen</string>
     <string name="gestures_title">Gestures</string>
+    <string name="display_title">Screen</string>
     <string name="ime_title">IME Settings</string>
     <string name="interface_title">Interface</string>
     <string name="lockscreen_title">Lock Screen</string>
