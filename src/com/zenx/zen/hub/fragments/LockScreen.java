@@ -27,11 +27,16 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.preference.*;
+import androidx.preference.Preference;
+import androidx.preference.ListPreference;
+import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.zenx.support.preferences.SystemSettingSeekBarPreference;
+
+import com.zenx.support.preferences.SecureSettingMasterSwitchPreference;
 
 public class LockScreen extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -40,11 +45,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
+    private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
 
     private SwitchPreference mFingerprintVib;
     ListPreference mLockClockFonts;
     ListPreference mLockDateFonts;
-
+    private SecureSettingMasterSwitchPreference mVisualizerEnabled;
     private SystemSettingSeekBarPreference mClockFontSize;
     private SystemSettingSeekBarPreference mDateFontSize;
 
@@ -54,6 +60,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.zen_hub_lockscreen);
 
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
         Resources resources = getResources();
 
         // Lockscren Clock Fonts
@@ -82,6 +89,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 Settings.System.LOCKDATE_FONT_SIZE,16));
         mDateFontSize.setOnPreferenceChangeListener(this);
 
+
+        mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
+        mVisualizerEnabled.setOnPreferenceChangeListener(this);
+        int visualizerEnabled = Settings.Secure.getInt(resolver,
+                LOCKSCREEN_VISUALIZER_ENABLED, 0);
+        mVisualizerEnabled.setChecked(visualizerEnabled != 0);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -106,6 +119,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKDATE_FONT_SIZE, top*1);
+            return true;
+        } else if (preference == mVisualizerEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.Secure.putInt(getContentResolver(),
+		            LOCKSCREEN_VISUALIZER_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
