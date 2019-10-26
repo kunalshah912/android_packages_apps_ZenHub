@@ -1,5 +1,5 @@
 /*
- * Copyright © 2019 ZenxOS
+ * Copyright © 2020 ZenxOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.internal.logging.nano.MetricsProto;
 
-public class NavigationBarSettings extends SettingsPreferenceFragment {
+public class Navigation extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle bundle) {
