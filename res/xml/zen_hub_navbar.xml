@@ -22,14 +22,14 @@
         android:fragment="com.android.settings.gestures.SystemNavigationGestureSettings"
         settings:controller="com.android.settings.gestures.SystemNavigationPreferenceController" />
 
-    <ListPreference
+    <!-- <ListPreference
         android:key="nav_bar_layout"
         android:title="@string/nav_bar_layout"
         android:summary="%s"
         android:defaultValue="default"
         android:persistent="false"
         android:entries="@array/nav_bar_layouts"
-        android:entryValues="@array/nav_bar_layouts_values" />
+        android:entryValues="@array/nav_bar_layouts_values" /> -->
 
     <com.zenx.support.preferences.SecureSettingSwitchPreference
             android:key="sysui_nav_bar_inverse"
