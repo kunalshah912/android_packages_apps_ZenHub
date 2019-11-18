@@ -29,15 +29,21 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.zenx.zen.hub.R;
 import com.zenx.support.preferences.CustomSeekBarPreference;
 import com.zenx.support.preferences.GlobalSettingMasterSwitchPreference;
+import com.zenx.support.preferences.SystemSettingSwitchPreference;
+import com.zenx.support.preferences.SystemSettingMasterSwitchPreference;
 
 public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
     private static final String FLASH_ON_CALL_WAITING_DELAY = "flash_on_call_waiting_delay";
+    private static final String LIGHTS_CATEGORY = "notification_lights";
+    private static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
     private static final String HEADS_UP_NOTIFICATIONS_ENABLED = "heads_up_notifications_enabled";
 
     private CustomSeekBarPreference mFlashOnCallWaitingDelay;
+    private PreferenceCategory mLightsCategory;
+    private SystemSettingMasterSwitchPreference mBatteryLightEnabled;
     private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
 
     @Override
@@ -58,6 +64,16 @@ public class Notifications extends SettingsPreferenceFragment
                 HEADS_UP_NOTIFICATIONS_ENABLED, 1);
         mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
 
+        mBatteryLightEnabled = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_LIGHT_ENABLED);
+        mBatteryLightEnabled.setOnPreferenceChangeListener(this);
+        int batteryLightEnabled = Settings.System.getInt(getContentResolver(),
+                BATTERY_LIGHT_ENABLED, 1);
+        mBatteryLightEnabled.setChecked(batteryLightEnabled != 0);
+
+        mLightsCategory = (PreferenceCategory) findPreference(LIGHTS_CATEGORY);
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_hasNotificationLed)) {
+            getPreferenceScreen().removePreference(mLightsCategory);
+        }
     }
 
     @Override
@@ -75,6 +91,11 @@ public class Notifications extends SettingsPreferenceFragment
             boolean value = (Boolean) newValue;
             Settings.Global.putInt(getContentResolver(),
 		            HEADS_UP_NOTIFICATIONS_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mBatteryLightEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+		            BATTERY_LIGHT_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
