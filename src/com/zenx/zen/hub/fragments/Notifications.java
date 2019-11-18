@@ -55,7 +55,7 @@ public class Notifications extends SettingsPreferenceFragment
         final ContentResolver resolver = getActivity().getContentResolver();
 
         mFlashOnCallWaitingDelay = (CustomSeekBarPreference) findPreference(FLASH_ON_CALL_WAITING_DELAY);
-        mFlashOnCallWaitingDelay.setValue(Settings.System.getInt(resolver, Settings.System.FLASH_ON_CALLWAITING_DELAY, 200));
+        mFlashOnCallWaitingDelay.setValue(Settings.System.getInt(getContentResolver(), Settings.System.FLASH_ON_CALLWAITING_DELAY, 200));
         mFlashOnCallWaitingDelay.setOnPreferenceChangeListener(this);
 
         mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
