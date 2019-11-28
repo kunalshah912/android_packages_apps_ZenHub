@@ -18,9 +18,10 @@ package com.zenx.zen.hub.fragments;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.UserHandle;
@@ -33,6 +34,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.zenx.zen.hub.preferences.AppMultiSelectListPreference;
 import com.zenx.zen.hub.preferences.ScrollAppsViewPreference;
+import com.zenx.support.preferences.CustomSeekBarPreference;
+import com.zenx.support.preferences.SecureSettingSwitchPreference;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -49,16 +52,30 @@ public class Display extends SettingsPreferenceFragment implements
     private static final String KEY_ASPECT_RATIO_APPS_LIST = "aspect_ratio_apps_list";
     private static final String KEY_ASPECT_RATIO_CATEGORY = "aspect_ratio_category";
     private static final String KEY_ASPECT_RATIO_APPS_LIST_SCROLLER = "aspect_ratio_apps_list_scroller";
+    private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
+    private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
+    private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
 
     private AppMultiSelectListPreference mAspectRatioAppsSelect;
     private ScrollAppsViewPreference mAspectRatioApps;
+    private CustomSeekBarPreference mCornerRadius;
+    private CustomSeekBarPreference mContentPadding;
+    private SecureSettingSwitchPreference mRoundedFwvals;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Resources res = null;
+        Context ctx = getContext();
+        float density = Resources.getSystem().getDisplayMetrics().density;
 
         addPreferencesFromResource(R.xml.zen_hub_display);
         resolver = getActivity().getContentResolver();
+        try {
+            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         final PreferenceCategory aspectRatioCategory =
         (PreferenceCategory) getPreferenceScreen().findPreference(KEY_ASPECT_RATIO_CATEGORY);
@@ -86,6 +103,27 @@ public class Display extends SettingsPreferenceFragment implements
             mAspectRatioAppsSelect.setOnPreferenceChangeListener(this);
         }
 
+        // Rounded Corner Radius
+        mCornerRadius = (CustomSeekBarPreference) findPreference(SYSUI_ROUNDED_SIZE);
+        int resourceIdRadius = (int) ctx.getResources().getDimension(com.android.internal.R.dimen.rounded_corner_radius);
+        int cornerRadius = Settings.Secure.getIntForUser(ctx.getContentResolver(), Settings.Secure.SYSUI_ROUNDED_SIZE,
+                ((int) (resourceIdRadius / density)), UserHandle.USER_CURRENT);
+        mCornerRadius.setValue(cornerRadius);
+        mCornerRadius.setOnPreferenceChangeListener(this);
+
+        // Rounded Content Padding
+        mContentPadding = (CustomSeekBarPreference) findPreference(SYSUI_ROUNDED_CONTENT_PADDING);
+        int resourceIdPadding = res.getIdentifier("com.android.systemui:dimen/rounded_corner_content_padding", null,
+                null);
+        int contentPadding = Settings.Secure.getIntForUser(ctx.getContentResolver(),
+                Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING,
+                (int) (res.getDimension(resourceIdPadding) / density), UserHandle.USER_CURRENT);
+        mContentPadding.setValue(contentPadding);
+        mContentPadding.setOnPreferenceChangeListener(this);
+
+        // Rounded use Framework Values
+        mRoundedFwvals = (SecureSettingSwitchPreference) findPreference(SYSUI_ROUNDED_FWVALS);
+        mRoundedFwvals.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -104,8 +142,36 @@ public class Display extends SettingsPreferenceFragment implements
                     Settings.System.ASPECT_RATIO_APPS_LIST, "");
             }
             return true;
+        } else if (preference == mCornerRadius) {
+            Settings.Secure.putIntForUser(getContext().getContentResolver(), Settings.Secure.SYSUI_ROUNDED_SIZE,
+                    (int) newValue, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mContentPadding) {
+            Settings.Secure.putIntForUser(getContext().getContentResolver(), Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING,
+                    (int) newValue, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mRoundedFwvals) {
+            restoreCorners();
+            return true;
         }
         return false;
+    }
+
+    private void restoreCorners() {
+        Resources res = null;
+        float density = Resources.getSystem().getDisplayMetrics().density;
+        Context ctx = getContext();
+
+        try {
+            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        int resourceIdRadius = (int) ctx.getResources().getDimension(com.android.internal.R.dimen.rounded_corner_radius);
+        int resourceIdPadding = res.getIdentifier("com.android.systemui:dimen/rounded_corner_content_padding", null, null);
+        mCornerRadius.setValue((int) (resourceIdRadius / density));
+        mContentPadding.setValue((int) (res.getDimension(resourceIdPadding) / density));
     }
 
     @Override
