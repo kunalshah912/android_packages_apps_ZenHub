@@ -52,6 +52,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private static final String PREF_ROWS_PORTRAIT = "qs_rows_portrait";
     private static final String PREF_ROWS_LANDSCAPE = "qs_rows_landscape";
     private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
+    private static final String QS_BLUR = "qs_blur";
 
     private CustomSeekBarPreference mQsPanelAlpha;
 //     private CustomSeekBarPreference mSysuiQqsCount;
@@ -65,6 +66,7 @@ public class QuickSettings extends SettingsPreferenceFragment
     private CustomSeekBarPreference mQsRowsPortrait;
     private CustomSeekBarPreference mQsRowsLandscape;
     private SystemSettingMasterSwitchPreference mCustomHeader;
+    private SystemSettingMasterSwitchPreference mQsBlur;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -142,6 +144,12 @@ public class QuickSettings extends SettingsPreferenceFragment
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0);
         mCustomHeader.setChecked(qsHeader != 0);
         mCustomHeader.setOnPreferenceChangeListener(this);
+
+        mQsBlur = (SystemSettingMasterSwitchPreference) findPreference(QS_BLUR);
+        int blur = Settings.System.getInt(getContentResolver(),
+                Settings.System.QS_BLUR, 0);
+                mQsBlur.setChecked(blur != 0);
+                mQsBlur.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -212,7 +220,12 @@ public class QuickSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_CUSTOM_HEADER, header ? 1 : 0);
             return true;
-        }
+        } else if (preference == mQsBlur) {
+                boolean blur = (Boolean) newValue;
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.QS_BLUR, blur ? 1 : 0);
+                return true;
+            }
         return false;
     }
 
