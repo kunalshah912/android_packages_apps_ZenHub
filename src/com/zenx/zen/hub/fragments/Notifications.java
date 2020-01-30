@@ -38,14 +38,12 @@ public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
-    private static final String FLASH_ON_CALL_WAITING_DELAY = "flash_on_call_waiting_delay";
     private static final String LIGHTS_CATEGORY = "notification_lights";
     private static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
     private static final String HEADS_UP_NOTIFICATIONS_ENABLED = "heads_up_notifications_enabled";
     private static final String PULSE_AMBIENT_LIGHT_COLOR = "pulse_ambient_light_color";
     private static final String PULSE_AMBIENT_LIGHT_DURATION = "pulse_ambient_light_duration";
 
-    private CustomSeekBarPreference mFlashOnCallWaitingDelay;
     private PreferenceCategory mLightsCategory;
     private SystemSettingMasterSwitchPreference mBatteryLightEnabled;
     private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
@@ -59,10 +57,6 @@ public class Notifications extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.zen_hub_notifications);
 		
         final ContentResolver resolver = getActivity().getContentResolver();
-
-        mFlashOnCallWaitingDelay = (CustomSeekBarPreference) findPreference(FLASH_ON_CALL_WAITING_DELAY);
-        mFlashOnCallWaitingDelay.setValue(Settings.System.getInt(getContentResolver(), Settings.System.FLASH_ON_CALLWAITING_DELAY, 200));
-        mFlashOnCallWaitingDelay.setOnPreferenceChangeListener(this);
 
         mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
         mHeadsUpEnabled.setOnPreferenceChangeListener(this);
@@ -107,11 +101,7 @@ public class Notifications extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mFlashOnCallWaitingDelay) {
-            int val = (Integer) newValue;
-            Settings.System.putInt(getContentResolver(), Settings.System.FLASH_ON_CALLWAITING_DELAY, val);
-            return true;
-        } else if (preference == mHeadsUpEnabled) {
+        if (preference == mHeadsUpEnabled) {
             boolean value = (Boolean) newValue;
             Settings.Global.putInt(getContentResolver(),
 		            HEADS_UP_NOTIFICATIONS_ENABLED, value ? 1 : 0);
