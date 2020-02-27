@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Zenx-OS
+ * Copyright (C) 2020 Zenx-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,24 +26,40 @@ import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.SettingsPreferenceFragment;
+import com.zenx.support.preferences.SystemSettingSeekBarPreference;
 
 import com.zenx.zen.hub.R;
 
-public class Battery extends SettingsPreferenceFragment
+public class BatteryBar extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
-    public static final String TAG = "Battery";
+    public static final String TAG = "BatteryBar";
+    private static final String KEY_THICKNESS = "statusbar_battery_bar_thickness";
+
+    private SystemSettingSeekBarPreference mThickness;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ContentResolver resolver = getActivity().getContentResolver();
 
-        addPreferencesFromResource(R.xml.zen_hub_battery);
+        addPreferencesFromResource(R.xml.battery_bar);
 
+        mThickness = (SystemSettingSeekBarPreference) findPreference(KEY_THICKNESS);
+        int thickness = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUSBAR_BATTERY_BAR_THICKNESS, 0, UserHandle.USER_CURRENT);
+        mThickness.setValue(thickness);
+        mThickness.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mThickness) {
+            int delay = (Integer) newValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_BATTERY_BAR_THICKNESS, delay, UserHandle.USER_CURRENT);
+            return true;
+        }
         return false;
     }
 
