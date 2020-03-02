@@ -72,14 +72,7 @@
             android:icon="@drawable/ic_settings_gesture"
             android:fragment="com.android.settings.gestures.GestureSettings"
             settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
-
-        <!-- Navigation Bar
-        <Preference
-            android:key="navigation_category"
-            android:title="@string/navigation_title"
-	        android:fragment="com.zenx.zen.hub.fragments.Navigation"
-            android:icon="@drawable/ic_settings_navigation"/> -->
-            
+                        
         <!-- Lock Screen -->
         <Preference
             android:key="lockscreen_category"
