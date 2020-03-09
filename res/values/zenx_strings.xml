@@ -993,6 +993,7 @@
     <string name="qs_battery_mode_estimate">Battery estimation</string>
 
     <string name="battery_bar_title">Battery bar</string>
+        <string name="battery_bar_summary">Show battery bar in status bar or navigation bar</string>
     <string name="battery_bar_color_title">Light colors</string>
     <string name="battery_bar_color_summary">Color range used on dark status bar</string>
     <string name="battery_bar_dark_color_title">Dark colors</string>
@@ -1016,6 +1017,9 @@
     <string name="battery_bar_location_statusbar_bottom">Status bar bottom</string>
     <string name="battery_bar_location_navbar_top">Navigation bar top</string>
     <string name="battery_bar_location_navbar_bottom">Navigation bar bottom</string>
+    <string name="battery_bar_location_qs_header">Qs header</string>
+    <string name="battery_bar_location_qs_footer">Qs footer</string>
+
     <!-- HW keys -->
     <string name="hardware_keys_title">Hardware</string>
     <string name="hardware_keys_disable_title">Hardware keys</string>
