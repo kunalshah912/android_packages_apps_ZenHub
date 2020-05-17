@@ -28,13 +28,17 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.zenx.zen.hub.R;
 import com.zenx.support.preferences.CustomSeekBarPreference;
+import com.zenx.support.preferences.GlobalSettingMasterSwitchPreference;
 
 public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
     private static final String FLASH_ON_CALL_WAITING_DELAY = "flash_on_call_waiting_delay";
+    private static final String HEADS_UP_NOTIFICATIONS_ENABLED = "heads_up_notifications_enabled";
+
     private CustomSeekBarPreference mFlashOnCallWaitingDelay;
+    private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,12 @@ public class Notifications extends SettingsPreferenceFragment
         mFlashOnCallWaitingDelay.setValue(Settings.System.getInt(resolver, Settings.System.FLASH_ON_CALLWAITING_DELAY, 200));
         mFlashOnCallWaitingDelay.setOnPreferenceChangeListener(this);
 
+        mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
+        mHeadsUpEnabled.setOnPreferenceChangeListener(this);
+        int headsUpEnabled = Settings.Global.getInt(getContentResolver(),
+                HEADS_UP_NOTIFICATIONS_ENABLED, 1);
+        mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
+
     }
 
     @Override
@@ -60,6 +70,11 @@ public class Notifications extends SettingsPreferenceFragment
         if (preference == mFlashOnCallWaitingDelay) {
             int val = (Integer) newValue;
             Settings.System.putInt(getContentResolver(), Settings.System.FLASH_ON_CALLWAITING_DELAY, val);
+            return true;
+        } else if (preference == mHeadsUpEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.Global.putInt(getContentResolver(),
+		            HEADS_UP_NOTIFICATIONS_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;

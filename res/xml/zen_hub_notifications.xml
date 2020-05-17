@@ -43,6 +43,13 @@
         android:key="notification_stat"
         android:title="@string/notification_stat">
 
+        <com.zenx.support.preferences.GlobalSettingMasterSwitchPreference
+            android:key="heads_up_notifications_enabled"
+            android:fragment="com.zenx.zen.hub.fragments.HeadsUpSettings"
+            android:title="@string/heads_up_notifications"
+            android:summary="@string/summary_heads_up_enabled"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
