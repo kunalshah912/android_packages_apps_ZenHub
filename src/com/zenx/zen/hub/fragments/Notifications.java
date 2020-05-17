@@ -20,17 +20,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.preference.*;
+import android.content.ContentResolver;
 import android.provider.Settings;
 import android.content.res.Resources;
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.zenx.zen.hub.R;
+import com.zenx.support.preferences.CustomSeekBarPreference;
 
 public class Notifications extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
+    private static final String FLASH_ON_CALL_WAITING_DELAY = "flash_on_call_waiting_delay";
+    private CustomSeekBarPreference mFlashOnCallWaitingDelay;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,11 @@ public class Notifications extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.zen_hub_notifications);
 		
-        PreferenceScreen prefScreen = getPreferenceScreen();
-        final Resources res = getResources();
+        final ContentResolver resolver = getActivity().getContentResolver();
+
+        mFlashOnCallWaitingDelay = (CustomSeekBarPreference) findPreference(FLASH_ON_CALL_WAITING_DELAY);
+        mFlashOnCallWaitingDelay.setValue(Settings.System.getInt(resolver, Settings.System.FLASH_ON_CALLWAITING_DELAY, 200));
+        mFlashOnCallWaitingDelay.setOnPreferenceChangeListener(this);
 
     }
 
@@ -49,7 +56,12 @@ public class Notifications extends SettingsPreferenceFragment
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mFlashOnCallWaitingDelay) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(), Settings.System.FLASH_ON_CALLWAITING_DELAY, val);
+            return true;
+        }
         return false;
     }
 
