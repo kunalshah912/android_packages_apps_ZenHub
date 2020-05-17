@@ -145,4 +145,6 @@
     <string name="statusbar_logo">Logo</string>
     <string name="statusbar_items_category">Icons</string>
     <string name="breathing_notifications_category">Breathing Notifications</string>
+     <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Statusbar items</string>
 </resources>
