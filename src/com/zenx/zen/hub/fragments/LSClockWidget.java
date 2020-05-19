@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Zenx-OS
+ * Copyright (C) 2018 zenx-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,40 +34,53 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.zenx.support.preferences.SystemSettingSeekBarPreference;
-
-import com.zenx.support.preferences.SecureSettingMasterSwitchPreference;
 import com.zenx.support.preferences.CustomSeekBarPreference;
 
-public class LockScreen extends SettingsPreferenceFragment implements
+import com.zenx.support.preferences.SecureSettingMasterSwitchPreference;
+
+public class LSClockWidget extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
+    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
+    private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
 
-    private SecureSettingMasterSwitchPreference mVisualizerEnabled;
+    ListPreference mLockClockFonts;
+    private CustomSeekBarPreference mClockFontSize;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.zen_hub_lockscreen);
+        addPreferencesFromResource(R.xml.ls_clock_widget);
 
         final PreferenceScreen prefScreen = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
         Resources resources = getResources();
 
-        mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
-        mVisualizerEnabled.setOnPreferenceChangeListener(this);
-        int visualizerEnabled = Settings.Secure.getInt(resolver,
-                LOCKSCREEN_VISUALIZER_ENABLED, 0);
-        mVisualizerEnabled.setChecked(visualizerEnabled != 0);
+        // Lockscren Clock Fonts
+        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 17)));
+        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        mLockClockFonts.setOnPreferenceChangeListener(this);
+
+        // Lock Clock Size
+        mClockFontSize = (CustomSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
+        mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKCLOCK_FONT_SIZE, 64));
+        mClockFontSize.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-        if (preference == mVisualizerEnabled) {
-            boolean value = (Boolean) newValue;
-            Settings.Secure.putInt(getContentResolver(),
-		            LOCKSCREEN_VISUALIZER_ENABLED, value ? 1 : 0);
+        if (preference == mLockClockFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockClockFonts.setValue(String.valueOf(newValue));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+            return true;
+        } else if (preference == mClockFontSize) {
+            int top = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKCLOCK_FONT_SIZE, top*1);
             return true;
         }
         return false;
@@ -75,6 +88,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.ZENX_SETTINGS;
+        return MetricsProto.MetricsEvent.zenx_SETTINGS;
     }
 }
