@@ -18,12 +18,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/screen_title" >
 
-    <Preference
-        android:key="display_cutout_force_fullscreen_settings"
-        android:title="@string/display_cutout_force_fullscreen_title"
-        android:summary="@string/display_cutout_force_fullscreen_summary"
-        android:fragment="com.zenx.zen.hub.fragments.DisplayCutoutForceFullscreenSettings" />
-
     <PreferenceCategory
         android:key="corners_category"
         android:title="@string/corners_category_title">
@@ -52,6 +46,12 @@
             settings:units="dp"
             android:persistent="false"
             android:dependency="sysui_rounded_fwvals" />
+
+        <Preference
+            android:key="display_cutout_force_fullscreen_settings"
+            android:title="@string/display_cutout_force_fullscreen_title"
+            android:summary="@string/display_cutout_force_fullscreen_summary"
+            android:fragment="com.zenx.zen.hub.fragments.DisplayCutoutForceFullscreenSettings" />
     </PreferenceCategory>
 
     <PreferenceCategory
