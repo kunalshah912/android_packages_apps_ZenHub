@@ -22,6 +22,7 @@
         <Preference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
+            android:summary="@string/statusbar_summary"
             android:fragment="com.zenx.zen.hub.fragments.StatusBar" 
             android:icon="@drawable/ic_settings_statusbar"/>
 
@@ -29,21 +30,24 @@
         <Preference
             android:key="quicksettings_category"
             android:title="@string/quicksettings_title"
+            android:summary="@string/quicksettings_summary"
             android:fragment="com.zenx.zen.hub.fragments.QuickSettings"
             android:icon="@drawable/ic_settings_quicksettings"/>
 
-        <!-- Interface
+        <!-- Lock Screen -->
         <Preference
-            android:key="interface_category"
-            android:title="@string/interface_title"
-            android:fragment="com.zenx.zen.hub.fragments.Interface"
-            android:icon="@drawable/ic_settings_int"/>  -->
-			
+            android:key="lockscreen_category"
+            android:title="@string/lockscreen_title"
+            android:summary="@string/lockscreen_summary"
+            android:fragment="com.zenx.zen.hub.fragments.LockScreen"
+            android:icon="@drawable/ic_settings_lockscreen"/>
+
         <!-- Ambient Display -->
         <Preference
             android:key="ambient_display_custom"
             android:persistent="false"
             android:title="@string/ambient_display_custom_title"
+            android:summary="@string/ambient_display_custom_summary"
             android:icon="@drawable/ic_settings_ambient" >
             <intent
                 android:action="android.intent.action.MAIN"
@@ -51,17 +55,11 @@
                 android:targetClass="com.custom.ambient.display.DozeSettings" />
         </Preference>
 
-        <!-- Display -->
-        <Preference
-            android:key="display_category"
-            android:title="@string/display_title"
-            android:fragment="com.zenx.zen.hub.fragments.Display"
-            android:icon="@drawable/ic_settings_screen"/>
-
         <!-- Buttons -->
         <Preference
             android:key="buttons_category"
             android:title="@string/buttons_title"
+            android:summary="@string/buttons_summary"
             android:fragment="com.zenx.zen.hub.fragments.Buttons"
             android:icon="@drawable/ic_settings_buttons"/>
         
@@ -70,15 +68,9 @@
             android:key="gesture_settings"
             android:title="@string/gesture_preference_title"
             android:icon="@drawable/ic_settings_gesture"
+            android:summary="@string/gestures_summary"
             android:fragment="com.android.settings.gestures.GestureSettings"
             settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
-                        
-        <!-- Lock Screen -->
-        <Preference
-            android:key="lockscreen_category"
-            android:title="@string/lockscreen_title" 
-            android:fragment="com.zenx.zen.hub.fragments.LockScreen"
-            android:icon="@drawable/ic_settings_lockscreen"/>
 
         <!-- Recents
         <Preference
@@ -91,41 +83,47 @@
         <Preference
             android:key="notifications_category"
             android:title="@string/notifications_title"
+            android:summary="@string/notifications_summary"
             android:fragment="com.zenx.zen.hub.fragments.Notifications"
             android:icon="@drawable/ic_settings_notifications"/>
+
+        <!-- Battery Saving -->
+        <Preference
+            android:key="battery_category"
+            android:title="@string/battery_title"
+            android:summary="@string/battery_saving_summary"
+            android:fragment="com.zenx.zen.hub.fragments.Battery"
+            android:icon="@drawable/ic_settings_batterysave"/>
+
+        <!-- Screen -->
+        <Preference
+            android:key="screen_category"
+            android:title="@string/screen_title"
+            android:summary="@string/screen_summary"
+            android:fragment="com.zenx.zen.hub.fragments.Screen"
+            android:icon="@drawable/ic_settings_screen"/>
 
         <!-- Animation -->
         <Preference
             android:key="animations_category"
             android:title="@string/animations_title"
+            android:summary="@string/animations_summary"
             android:fragment="com.zenx.zen.hub.fragments.Animations"
             android:icon="@drawable/ic_settings_animations"/>
-
-        <!-- System
-        <Preference
-            android:key="system_category"
-            android:title="@string/system_title"
-            android:fragment="com.zenx.zen.hub.fragments.System"
-            android:icon="@drawable/ic_settings_system"/> -->
 
         <!-- IME Settings -->
         <Preference
             android:key="ime_category"
             android:title="@string/ime_title"
+            android:summary="@string/ime_summary"
             android:fragment="com.zenx.zen.hub.fragments.IME"
             android:icon="@drawable/ic_settings_ime"/>
-        
-        <!-- Battery Saving -->
-        <Preference
-            android:key="battery_category"
-            android:title="@string/battery_title"
-            android:fragment="com.zenx.zen.hub.fragments.Battery"
-            android:icon="@drawable/ic_settings_batterysave"/>
 
         <!-- Misc -->
         <Preference
             android:key="misc_category"
             android:title="@string/misc_title"
+            android:summary="@string/misc_summary"
             android:fragment="com.zenx.zen.hub.fragments.Misc"
             android:icon="@drawable/ic_settings_misc"/>
 
@@ -133,6 +131,7 @@
         <Preference
             android:key="about_category"
             android:title="@string/about_title"
+            android:summary="@string/about_summary"
             android:fragment="com.zenx.zen.hub.fragments.About"
             android:icon="@drawable/ic_settings_about"/>
 

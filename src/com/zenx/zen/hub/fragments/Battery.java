@@ -21,30 +21,70 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
-import androidx.preference.*;
 import android.provider.Settings;
+import androidx.preference.*;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
+
+import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.zenx.zen.hub.R;
+import com.zenx.support.preferences.SystemSettingMasterSwitchPreference;
 
-public class Battery extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener {
+public class Battery extends SettingsPreferenceFragment implements 
+        Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Battery";
+
+    private static final String SMART_PIXELS_ENABLED = "smart_pixels_enable";
+    private static final String SCREEN_STATE_TOGGLES_ENABLE = "screen_state_toggles_enable_key";
+
+    private SystemSettingMasterSwitchPreference mSmartPixelsEnabled;
+    private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         addPreferencesFromResource(R.xml.zen_hub_battery);
 
+        mSmartPixelsEnabled = (SystemSettingMasterSwitchPreference) findPreference(SMART_PIXELS_ENABLED);
+        mSmartPixelsEnabled.setOnPreferenceChangeListener(this);
+        int smartPixelsEnabled = Settings.System.getInt(getContentResolver(),
+                SMART_PIXELS_ENABLED, 0);
+        mSmartPixelsEnabled.setChecked(smartPixelsEnabled != 0);
+
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_enableSmartPixels)) {
+            getPreferenceScreen().removePreference(mSmartPixelsEnabled);
+        }
+
+        mEnableScreenStateToggles = (SystemSettingMasterSwitchPreference) findPreference(SCREEN_STATE_TOGGLES_ENABLE);
+        int enabled = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
+        mEnableScreenStateToggles.setChecked(enabled != 0);
+        mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return false;
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mSmartPixelsEnabled) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+		            SMART_PIXELS_ENABLED, value ? 1 : 0);
+        } else if (preference == mEnableScreenStateToggles) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.START_SCREEN_STATE_SERVICE, value ? 1 : 0, UserHandle.USER_CURRENT);
+            Intent service = (new Intent())
+                .setClassName("com.android.systemui", "com.android.systemui.zenx.screenstate.ScreenStateService");
+            if (value) {
+                getActivity().stopService(service);
+                getActivity().startService(service);
+            } else {
+                getActivity().stopService(service);
+            }
+            return true;
+        }
+        return true; 
     }
 
     @Override

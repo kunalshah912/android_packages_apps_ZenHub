@@ -52,7 +52,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
-import com.android.internal.util.zenx.Utils;
+import com.zenx.zen.hub.preferences.Utils;
 import com.zenx.support.preferences.CustomSeekBarPreference;
 import com.zenx.support.preferences.SystemSettingListPreference;
 import com.zenx.support.preferences.SystemSettingMasterSwitchPreference;

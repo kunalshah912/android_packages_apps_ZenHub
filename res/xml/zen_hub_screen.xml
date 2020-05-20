@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2018 Zenx-OS
+<!-- Copyright (C) 2018 ZenX-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,32 +15,14 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/display_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-
-     <Preference
-            android:key="smart_pixels"
-            android:title="@string/smart_pixels_title"
-            android:summary="@string/smart_pixels_summary"
-            android:fragment="com.zenx.zen.hub.fragments.SmartPixels" />
-            
-    <!-- <PreferenceCategory
-        android:title="@string/corners_category" >
-
-
-    </PreferenceCategory> -->
-
-    <PreferenceCategory
-        android:key="cutout_settings"
-        android:title="@string/cutout_main" >
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/screen_title" >
 
     <Preference
         android:key="display_cutout_force_fullscreen_settings"
         android:title="@string/display_cutout_force_fullscreen_title"
         android:summary="@string/display_cutout_force_fullscreen_summary"
         android:fragment="com.zenx.zen.hub.fragments.DisplayCutoutForceFullscreenSettings" />
-
-    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="corners_category"

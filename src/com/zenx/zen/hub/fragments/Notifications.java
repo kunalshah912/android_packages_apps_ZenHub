@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Zenx-OS
+ * Copyright (C) 2018 ZenX-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,8 +53,6 @@ public class Notifications extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.zen_hub_notifications);
-		
-        final ContentResolver resolver = getActivity().getContentResolver();
 
         mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
         mHeadsUpEnabled.setOnPreferenceChangeListener(this);
@@ -103,6 +101,7 @@ public class Notifications extends SettingsPreferenceFragment
                     AMBIENT_NOTIFICATION_LIGHT, value ? 1 : 0);
             return true;
         }
+
         return false;
     }
 

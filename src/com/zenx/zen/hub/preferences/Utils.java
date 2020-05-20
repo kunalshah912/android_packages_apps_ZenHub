@@ -69,6 +69,11 @@ public final class Utils {
                 .getUsers().size() > 1;
     }
 
+    // Check if device has a notch
+    public static boolean hasNotch(Context context) {
+        return context.getResources().getBoolean(com.android.internal.R.bool.config_haveNotch);
+    }
+
     private static int getScreenType(Context context) {
         if (sDeviceType == -1) {
             WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
