@@ -28,7 +28,7 @@
         android:max="42"
         settings:min="10"
         settings:units="dp"
-        android:defaultValue="20"
+        android:defaultValue="22"
         android:persistent="false" />
 
     <ListPreference

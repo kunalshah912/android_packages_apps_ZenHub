@@ -65,7 +65,7 @@ public class LSDateWidget extends SettingsPreferenceFragment implements
          // Lock Date Size
         mDateFontSize = (CustomSeekBarPreference) findPreference(DATE_FONT_SIZE);
         mDateFontSize.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKDATE_FONT_SIZE,20));
+                Settings.System.LOCKDATE_FONT_SIZE,22));
         mDateFontSize.setOnPreferenceChangeListener(this);
 
     }
@@ -88,6 +88,6 @@ public class LSDateWidget extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.zenx_SETTINGS;
+        return MetricsProto.MetricsEvent.ZENX_SETTINGS;
     }
 }

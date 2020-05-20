@@ -51,6 +51,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
     private SecureSettingMasterSwitchPreference mVisualizerEnabled;
     private CustomSeekBarPreference mMaxKeyguardNotifConfig;
+    private SystemSettingMasterSwitchPreference mLsBatteryBar;
 
     @Override
     public void onCreate(Bundle icicle) {

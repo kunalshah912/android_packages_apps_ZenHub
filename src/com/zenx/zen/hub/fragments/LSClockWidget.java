@@ -66,7 +66,7 @@ public class LSClockWidget extends SettingsPreferenceFragment implements
         // Lock Clock Size
         mClockFontSize = (CustomSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
         mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKCLOCK_FONT_SIZE, 64));
+                Settings.System.LOCKCLOCK_FONT_SIZE, 76));
         mClockFontSize.setOnPreferenceChangeListener(this);
     }
 
@@ -88,6 +88,6 @@ public class LSClockWidget extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.zenx_SETTINGS;
+        return MetricsProto.MetricsEvent.ZENX_SETTINGS;
     }
 }
