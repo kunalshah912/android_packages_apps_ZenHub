@@ -15,15 +15,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
 	android:title="@string/lockscreen_clock_title">
 
-     <com.zenx.support.preferences.SecureSettingListPreference
-        android:key="lockscreen_clock_selection"
-        android:title="@string/lockscreen_clock_title"
-        android:dialogTitle="@string/lockscreen_clock_dialog_title"
-        android:entries="@array/lockscreen_clock_selection_entries"
-        android:entryValues="@array/lockscreen_clock_selection_values"
-        android:summary="%s"
-        android:defaultValue="2" />
-
      <com.zenx.support.preferences.SystemSettingListPreference
         android:key="lockscreen_clock_position"
         android:title="@string/ls_clock_position_title"
