@@ -111,14 +111,6 @@
             android:fragment="com.zenx.zen.hub.fragments.Animations"
             android:icon="@drawable/ic_settings_animations"/>
 
-        <!-- IME Settings -->
-        <Preference
-            android:key="ime_category"
-            android:title="@string/ime_title"
-            android:summary="@string/ime_summary"
-            android:fragment="com.zenx.zen.hub.fragments.IME"
-            android:icon="@drawable/ic_settings_ime"/>
-
         <!-- Misc -->
         <Preference
             android:key="misc_category"

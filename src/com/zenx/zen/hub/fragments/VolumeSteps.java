@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class VolumeStepsFragment extends SettingsPreferenceFragment implements
+public class VolumeSteps extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "VolumeSteps";
