@@ -28,9 +28,7 @@ import android.net.Uri;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.preference.Preference;
-import androidx.preference.ListPreference;
-import androidx.preference.PreferenceScreen;
+import androidx.preference.*;
 import android.content.pm.PackageManager;
 
 import com.android.internal.custom.app.LineageContextConstants;
@@ -65,7 +63,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mFODAnimationEnabled;
     private SwitchPreference mScreenOffFOD;
     private SystemSettingSwitchPreference mScreenOffFODIcon;
-    private Preference mFODIconPicker;
+    private PreferenceCategory mFODIconPicker;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -96,20 +94,21 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
         mScreenOffFODIcon = (SystemSettingSwitchPreference) findPreference(KEY_SCREEN_OFF_FOD_ICON);
 
+        boolean hasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
+
+        mFODIconPicker = (PreferenceCategory) findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPicker != null && !hasFod) {
+            prefSet.removePreference(mFODIconPicker);
+        }
+        
         if (!packageManager.hasSystemFeature(LineageContextConstants.Features.FOD)) {
             mFODAnimationEnabled.setVisible(false);
             mScreenOffFOD.setVisible(false);
             mScreenOffFODIcon.setVisible(false);
+            prefSet.removePreference(mFODIconPicker);
         }
 
         updateMasterPrefs();
-
-        boolean hasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
-
-        mFODIconPicker = (Preference) findPreference(FOD_ICON_PICKER_CATEGORY);
-        if (mFODIconPicker != null && !hasFod) {
-            prefSet.removePreference(mFODIconPicker);
-        }
     }
 
     private void updateMasterPrefs() {
