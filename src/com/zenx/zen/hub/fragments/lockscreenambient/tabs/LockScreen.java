@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import androidx.preference.Preference;
 import androidx.preference.ListPreference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import android.content.pm.PackageManager;
 
@@ -65,7 +66,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mFODAnimationEnabled;
     private SwitchPreference mScreenOffFOD;
     private SystemSettingSwitchPreference mScreenOffFODIcon;
-    private Preference mFODIconPicker;
+    private PreferenceCategory mFODIconPickerCategory;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -83,7 +84,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
         int lsBatteryBar = Settings.System.getInt(resolver,
                 SYSUI_KEYGUARD_SHOW_BATTERY_BAR, 1);
         mLsBatteryBar.setChecked(lsBatteryBar != 0);
-        PackageManager packageManager = getPackageManager();
+        PackageManager packageManager = mContext.getPackageManager();
 
         mFODAnimationEnabled = (SystemSettingSwitchPreference) findPreference(FOD_ANIMATION_PREF);
 
@@ -96,6 +97,13 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
         mScreenOffFODIcon = (SystemSettingSwitchPreference) findPreference(KEY_SCREEN_OFF_FOD_ICON);
 
+        boolean hasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
+
+        mFODIconPickerCategory = (PreferenceCategory) findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPickerCategory != null && !hasFod) {
+            prefSet.removePreference(mFODIconPickerCategory);
+        }
+
         if (!packageManager.hasSystemFeature(LineageContextConstants.Features.FOD)) {
             mFODAnimationEnabled.setVisible(false);
             mScreenOffFOD.setVisible(false);
@@ -104,12 +112,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
         updateMasterPrefs();
 
-        boolean hasFod = packageManager.hasSystemFeature(LineageContextConstants.Features.FOD);
-
-        mFODIconPicker = (Preference) findPreference(FOD_ICON_PICKER_CATEGORY);
-        if (mFODIconPicker != null && !hasFod) {
-            prefSet.removePreference(mFODIconPicker);
-        }
     }
 
     private void updateMasterPrefs() {
